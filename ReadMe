@@ -1,0 +1,73 @@
+''' Lab 003 Function Exploration with Peers '''
+a peer to peer chat application built using the Pyre library
+
+# Setup
+''' Requirements '''
+1. Python3
+2. zeromq-pyre package
+
+''' Installation '''
+1. Clone this repository and open it in Pycharm
+2. Open the Pycharm terminal and install the required package:
+
+pip install zeromq-pyre
+
+3. Make sure both lab003.py and lab_chat.py are in the same project folder
+
+''' Running the chat '''
+1. Open lab003.py in Pycharm
+2. Run the file
+3. enter a username and group name when prompted
+4. Type a message to send to the group, press ctrl+c to stop the chat
+
+''' Function Analysis '''
+This section documents lab_chat.py
+
+'''
+# get_peer_node
+def get_peer_node(username): # function get_peer_node
+
+Parameters:
+username: this username is a string to identify the peer-to-peer node
+
+Returns: n, a Pyre node object representing me as a peer on the network
+
+Overall: this function creates and starts a peer to peer node using the given user name as it's identity,
+then returns the node that can be used elsewhere
+
+# join_group
+def join_group(node, group):
+
+Parameters:
+node: the peer to peer node that wants to join a group
+group: the name of the chat group to join
+
+Returns: nothing
+Overall: this function connects the given node to the specified group
+
+# chat_task
+def chat_task(ctx, pipe, n, group):
+
+Parameters:
+ctx: no idea
+pipe:ummm
+n: the peer to peer node connected to network
+group: the name of the chat group
+
+Returns: nothing
+
+Overall: this function is the background send and receive messages
+
+# get_channel
+def get_channel(node,group):
+
+Parameters:
+node: The peer-to-peer node to use for the chat
+group: The name of the group to chat in
+
+Returns: a channel created by zhelper.zthread_fork
+connected to a background threat running chat_task
+
+Overall: this function starts chat_task running in a separate background
+thread and gives a channel to use to send messages which broadcasts
+them to the group and prints incoming messages
